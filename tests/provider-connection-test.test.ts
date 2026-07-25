@@ -105,16 +105,21 @@ describe("POST /api/providers/test (WP040 connectivity probe)", () => {
   });
 
   test("a live 200 with model data reports ok:true with the count", async () => {
-    globalThis.fetch = (async () => new Response(JSON.stringify({ data: [{ id: "m-1" }, { id: "m-2" }] }), {
-      status: 200,
-      headers: { "content-type": "application/json" },
-    })) as typeof fetch;
+    let redirect: RequestRedirect | undefined;
+    globalThis.fetch = (async (_input: RequestInfo | URL, init?: RequestInit) => {
+      redirect = init?.redirect;
+      return new Response(JSON.stringify({ data: [{ id: "m-1" }, { id: "m-2" }] }), {
+        status: 200,
+        headers: { "content-type": "application/json" },
+      });
+    }) as typeof fetch;
     const config = baseConfig({
       live: { adapter: "openai-chat", baseUrl: "https://api.example.test/v1", apiKey: "sk-live" },
     });
     const { body } = await probe(config, "live");
     expect(body.ok).toBe(true);
     expect(body.models).toBe(2);
+    expect(redirect).toBe("error");
   });
 
   test("Google's models-array response shape is accepted (x-goog-api-key path)", async () => {
