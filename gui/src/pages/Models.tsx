@@ -968,7 +968,7 @@ export default function Models({ apiBase, viewMode }: { apiBase: string; viewMod
                 disabled={smartRoutingBusy}
               >
                 <span className="mono leading-ui">{t(`models.smartRouting_${mode}` as TKey)}</span>
-                <span className="muted text-label">{combo ? `${combo.model} · ${combo.targets.length}` : t(`models.smartRouting_${mode}Hint` as TKey)}</span>
+                <span className="muted text-label">{combo ? `${combo.model} · ${combo.targets.length}` : t(`models.smartRouting_${mode}` as TKey)}</span>
               </button>
             );
           })}
