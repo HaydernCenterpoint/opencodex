@@ -292,7 +292,7 @@ export async function handleProviderRoutes(ctx: ManagementContext): Promise<Resp
     const { url: modelsUrl, headers } = buildModelsRequest(prov, apiKey, name);
     const started = Date.now();
     try {
-      const res = await fetch(modelsUrl, { headers, signal: AbortSignal.timeout(8000) });
+      const res = await fetch(modelsUrl, { headers, redirect: "error", signal: AbortSignal.timeout(8000) });
       const latencyMs = Date.now() - started;
       if (!res.ok) {
         return jsonResponse({ ok: false, latencyMs, error: `upstream /models returned ${res.status}` });
