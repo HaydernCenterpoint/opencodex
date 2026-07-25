@@ -1066,6 +1066,7 @@ export const de = {
   "modal.modelDiscovery": "Modellsuche",
   "modal.modelDiscoveryHint": "Verfügbare Modelle für diese Einrichtung suchen.",
   "modal.discoverModels": "Modelle suchen",
+  "modal.openRouterFreeOnly": "Nur kostenlose OpenRouter-Modelle verwenden",
   "modal.discovering": "Suche läuft…",
   "modal.modelsLive": "Live-Antwort des Anbieters",
   "modal.modelsStatic": "Statischer Katalog",
