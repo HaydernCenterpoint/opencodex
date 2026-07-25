@@ -384,6 +384,16 @@ export const ja: Record<TKey, string> = {
   "models.allowlistLabel": "選択のみ",
   "models.allowlistHint": "チェックしたモデルのみカタログに送信します(空 = すべて)。数千のモデルを公開するプロバイダーで有用です。",
   "models.selectedCount": "{n} 件選択",
+  "models.orderHint": "ピッカーの順序: サブエージェントの選択(選択順) → 残りのルーティングモデルはプロバイダー別、次にモデル ID 別のアルファベット順 → ネイティブモデル。表示切り替えはモデルをフィルタするだけで、この順序は変更しません。",
+  "models.smartRoutingTitle": "スマートルーティング",
+  "models.smartRoutingHint": "有効なモデルから、知能・バランス・コスト向けの3つの自動ルートを作成します。",
+  "models.smartRoutingApply": "スマートルートを適用",
+  "models.smartRoutingApplying": "適用中…",
+  "models.smartRoutingApplied": "{mode} のスマートルーティングを適用しました。",
+  "models.smartRoutingFailed": "スマートルーティングを適用できませんでした。",
+  "models.smartRouting_intelligence": "知能",
+  "models.smartRouting_balance": "バランス",
+  "models.smartRouting_cost": "コスト",
 
   // subagents
   "sub.subtitle": "Codex の {cmd} は最初の 5 モデル(優先度順)のみをオーバーライドとして通知します。ここで最大 5 つを選んでください — ネイティブ gpt またはルーティング — opencodex がカタログ優先度を設定し、これらが先頭に来るようにします。他のモデルも正確な名前で呼び出し可能です; これは表示のみを制御します。",
