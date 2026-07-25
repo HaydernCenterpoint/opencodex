@@ -413,7 +413,6 @@ export const zh: Record<TKey, string> = {
   "models.allowlistLabel": "仅所选",
   "models.allowlistHint": "仅勾选的模型进入目录（留空 = 全部）。适用于暴露成千上万模型的提供商。",
   "models.selectedCount": "已选 {n} 个",
-  "models.orderHint": "选择器顺序：Subagents 中的选择（按所选顺序）→ 其余已路由模型（依次按提供方、模型 ID 字母排序）→ 原生模型。可见性开关仅用于筛选，不会改变此顺序。",
   "models.smartRoutingTitle": "智能路由",
   "models.smartRoutingHint": "从已启用的模型创建三条自动路由，分别用于智能、均衡和成本场景。",
   "models.smartRoutingApply": "应用智能路由",

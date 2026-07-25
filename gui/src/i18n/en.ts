@@ -419,7 +419,6 @@ export const en = {
   "models.allowlistLabel": "Only selected",
   "models.allowlistHint": "Only checked models ship to the catalog (empty = all). Useful for providers exposing thousands of models.",
   "models.selectedCount": "{n} selected",
-  "models.orderHint": "Picker order: Subagents picks (in the selected order) → remaining routed models alphabetically by provider, then model ID → native models. Visibility switches only filter models; they do not change this order.",
   "models.smartRoutingTitle": "Smart routing",
   "models.smartRoutingHint": "Create three automatic routes from your enabled models for intelligence, balanced use, and cost.",
   "models.smartRoutingApply": "Apply smart routes",

@@ -403,7 +403,6 @@ export const de = {
   "models.allowlistLabel": "Nur ausgewählte",
   "models.allowlistHint": "Nur geprüfte Modelle gehen in den Katalog (leer = alle). Nützlich für Anbieter mit tausenden Modellen.",
   "models.selectedCount": "{n} ausgewählt",
-  "models.orderHint": "Reihenfolge in der Modellauswahl: Subagents-Auswahl (in der festgelegten Reihenfolge) → übrige geroutete Modelle alphabetisch nach Anbieter, dann Modell-ID → native Modelle. Sichtbarkeitsschalter filtern nur; sie ändern diese Reihenfolge nicht.",
   "models.smartRoutingTitle": "Intelligentes Routing",
   "models.smartRoutingHint": "Erstellt aus deinen aktivierten Modellen drei automatische Routen für Intelligenz, ausgewogene Nutzung und Kosten.",
   "models.smartRoutingApply": "Intelligente Routen anwenden",

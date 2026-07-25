@@ -413,7 +413,6 @@ export const ko: Record<TKey, string> = {
   "models.allowlistLabel": "선택만 노출",
   "models.allowlistHint": "체크한 모델만 카탈로그에 노출돼요 (비우면 전체). 수천 개 모델을 노출하는 프로바이더에 유용해요.",
   "models.selectedCount": "{n}개 선택",
-  "models.orderHint": "피커 순서: Subagents에서 지정한 순서 → 나머지 라우팅 모델(프로바이더, 모델 ID 순 알파벳 정렬) → 네이티브 모델. 노출 토글은 모델을 필터링할 뿐 이 순서를 바꾸지 않습니다.",
   "models.smartRoutingTitle": "스마트 라우팅",
   "models.smartRoutingHint": "활성화된 모델에서 지능, 균형, 비용을 위한 세 개의 자동 경로를 만듭니다.",
   "models.smartRoutingApply": "스마트 경로 적용",

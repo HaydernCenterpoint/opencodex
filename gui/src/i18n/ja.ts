@@ -384,7 +384,6 @@ export const ja: Record<TKey, string> = {
   "models.allowlistLabel": "選択のみ",
   "models.allowlistHint": "チェックしたモデルのみカタログに送信します(空 = すべて)。数千のモデルを公開するプロバイダーで有用です。",
   "models.selectedCount": "{n} 件選択",
-  "models.orderHint": "ピッカーの順序: サブエージェントの選択(選択順) → 残りのルーティングモデルはプロバイダー別、次にモデル ID 別のアルファベット順 → ネイティブモデル。表示切り替えはモデルをフィルタするだけで、この順序は変更しません。",
   "models.smartRoutingTitle": "スマートルーティング",
   "models.smartRoutingHint": "有効なモデルから、知能・バランス・コスト向けの3つの自動ルートを作成します。",
   "models.smartRoutingApply": "スマートルートを適用",
