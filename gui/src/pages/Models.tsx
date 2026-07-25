@@ -46,6 +46,8 @@ interface ShadowCallData {
   model: string;
 }
 
+type SmartRoutingMode = "intelligence" | "balance" | "cost";
+
 const CAP_OPTIONS = Array.from({ length: 18 }, (_, i) => 100_000 + i * 50_000); // 100k … 950k
 const CAP_OPTION_SET = new Set(CAP_OPTIONS);
 const CUSTOM_OPTION = "custom";
@@ -126,6 +128,8 @@ export default function Models({ apiBase, viewMode }: { apiBase: string; viewMod
   // an API error must never masquerade as "no combos configured").
   const [combos, setCombos] = useState<ComboItem[] | null>(null);
   const [combosError, setCombosError] = useState(false);
+  const [smartRoutingBusy, setSmartRoutingBusy] = useState(false);
+  const [smartRoutingMode, setSmartRoutingMode] = useState<SmartRoutingMode>("balance");
   const [combosOpen, setCombosOpen] = useState(() => {
     try { return localStorage.getItem("ocx-models-combos-open") === "1"; } catch { return false; }
   });
@@ -139,6 +143,29 @@ export default function Models({ apiBase, viewMode }: { apiBase: string; viewMod
       try { localStorage.setItem("ocx-models-combos-open", next ? "1" : "0"); } catch { /* ignore */ }
       return next;
     });
+  };
+
+  const applySmartRouting = async () => {
+    setSmartRoutingBusy(true);
+    try {
+      const response = await fetch(`${apiBase}/api/smart-routing`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ mode: smartRoutingMode }),
+      });
+      const payload = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(payload.error || String(response.status));
+      const comboResponse = await fetch(`${apiBase}/api/combos`);
+      if (!comboResponse.ok) throw new Error(String(comboResponse.status));
+      setCombos(parseComboList(await comboResponse.json()));
+      setOk(true);
+      setStatus(t("models.smartRoutingApplied", { mode: t(`models.smartRouting_${smartRoutingMode}` as TKey) }));
+    } catch (error) {
+      setOk(false);
+      setStatus(error instanceof Error && error.message ? error.message : t("models.smartRoutingFailed"));
+    } finally {
+      setSmartRoutingBusy(false);
+    }
   };
 
   useEffect(() => {
@@ -917,6 +944,37 @@ export default function Models({ apiBase, viewMode }: { apiBase: string; viewMod
 
   const combosBlock = (
     <>
+      <div className="card models-smart-routing-card" style={{ marginBottom: 10 }}>
+        <div className="models-smart-routing-head">
+          <div>
+            <strong>{t("models.smartRoutingTitle")}</strong>
+            <div className="muted text-label leading-body">{t("models.smartRoutingHint")}</div>
+          </div>
+          <button type="button" className="btn btn-sm" disabled={smartRoutingBusy} onClick={() => void applySmartRouting()}>
+            {smartRoutingBusy ? t("models.smartRoutingApplying") : t("models.smartRoutingApply")}
+          </button>
+        </div>
+        <div className="models-smart-routing-grid" role="radiogroup" aria-label={t("models.smartRoutingTitle")}>
+          {(["intelligence", "balance", "cost"] as const).map(mode => {
+            const combo = combos?.find(item => item.id === `auto-${mode}`);
+            return (
+              <button
+                type="button"
+                role="radio"
+                aria-checked={smartRoutingMode === mode}
+                key={mode}
+                className={`models-smart-routing-mode${smartRoutingMode === mode ? " selected" : ""}`}
+                onClick={() => setSmartRoutingMode(mode)}
+                disabled={smartRoutingBusy}
+              >
+                <span className="mono leading-ui">{t(`models.smartRouting_${mode}` as TKey)}</span>
+                <span className="muted text-label">{combo ? `${combo.model} · ${combo.targets.length}` : t(`models.smartRouting_${mode}` as TKey)}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
      {combos !== null && !combosError && combos.length === 0 && (
        <div className="card models-combos-card" style={{ marginBottom: 10 }}>
          <div className="row" style={{ padding: "10px 12px", justifyContent: "space-between", gap: 8 }}>

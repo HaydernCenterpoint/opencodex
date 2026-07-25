@@ -417,6 +417,15 @@ export const ru: Record<TKey, string> = {
   "models.allowlistLabel": "Только выбранные",
   "models.allowlistHint": "В каталог попадают только отмеченные модели (пусто = все). Полезно для провайдеров, предоставляющих тысячи моделей.",
   "models.selectedCount": "Выбрано: {n}",
+  "models.smartRoutingTitle": "Умная маршрутизация",
+  "models.smartRoutingHint": "Создаёт из включённых моделей три автоматических маршрута: для качества, баланса и стоимости.",
+  "models.smartRoutingApply": "Применить умные маршруты",
+  "models.smartRoutingApplying": "Применяется…",
+  "models.smartRoutingApplied": "Применена умная маршрутизация для режима «{mode}».",
+  "models.smartRoutingFailed": "Не удалось применить умную маршрутизацию.",
+  "models.smartRouting_intelligence": "качество",
+  "models.smartRouting_balance": "баланс",
+  "models.smartRouting_cost": "стоимость",
 
   // subagents
   "sub.subtitle": "{cmd} в Codex объявляет как переопределения только первые 5 моделей (по приоритету). Выберите здесь до 5 моделей — нативные gpt или маршрутизируемые — и opencodex задаст им приоритет в каталоге так, чтобы именно они шли первыми. Любую другую модель по-прежнему можно вызвать по её точному имени; эта настройка управляет только тем, что отображается.",
